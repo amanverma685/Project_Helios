@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Helios',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.teal,
       ),
       home: MyHomePage(title: 'Helios'),
     );
