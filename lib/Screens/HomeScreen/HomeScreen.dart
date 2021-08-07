@@ -15,6 +15,23 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Container(
         width: MediaQuery.of(context).size.width * 0.7,
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.orange,
+              offset: Offset(
+                5.0,
+                5.0,
+              ),
+              blurRadius: 10.0,
+              spreadRadius: 2.0,
+            ), //BoxShadow
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(0.0, 0.0),
+              blurRadius: 0.0,
+              spreadRadius: 0.0,
+            ), //BoxShadow
+          ],
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(25),
@@ -28,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Center(
                 child: CircleAvatar(
                   foregroundImage: AssetImage("assets/images/profile.jpg"),
-                  maxRadius: 100,
+                  maxRadius: 60,
                   minRadius: 40,
                 ),
               ),
@@ -40,25 +57,24 @@ class _HomeScreenState extends State<HomeScreen> {
               thickness: 2,
             ),
             Expanded(
-              flex: 2,
+              flex: 4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ListTile(
-                    title: Text("Aman"),
+                    title: Text("Today's Deals"),
                     onTap: () {},
                     leading: Icon(Icons.home),
                   ),
                   ListTile(
-                    title: Text("Aman"),
+                    title: Text("Offers"),
                     onTap: () {},
-                    leading: Icon(Icons.home),
-                    tileColor: Colors.orange,
+                    leading: Icon(Icons.ac_unit_rounded),
                   ),
                   ListTile(
-                    title: Text("Aman"),
+                    title: Text("Previous Orders"),
                     onTap: () {},
-                    leading: Icon(Icons.home),
+                    leading: Icon(Icons.snippet_folder),
                   ),
                   ListTile(
                     title: Text("Aman"),
