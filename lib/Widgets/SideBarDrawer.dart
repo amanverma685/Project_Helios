@@ -83,7 +83,7 @@ class SideBarDrawer extends StatelessWidget {
                   screenName: HomeScreen(),
                   iconName: Icon(
                     Icons.home_rounded,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
                 ListTileSideNavDrawer(
@@ -91,7 +91,7 @@ class SideBarDrawer extends StatelessWidget {
                   screenName: TodaysDeals(),
                   iconName: Icon(
                     Icons.tag,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
                 ListTileSideNavDrawer(
@@ -99,7 +99,7 @@ class SideBarDrawer extends StatelessWidget {
                   screenName: OffersScreen(),
                   iconName: Icon(
                     Icons.offline_bolt_outlined,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
                 ListTileSideNavDrawer(
@@ -107,7 +107,7 @@ class SideBarDrawer extends StatelessWidget {
                   screenName: PreviousOrdersScreen(),
                   iconName: Icon(
                     Icons.delivery_dining,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
                 ListTileSideNavDrawer(
@@ -115,7 +115,7 @@ class SideBarDrawer extends StatelessWidget {
                   screenName: YourAccountScreen(),
                   iconName: Icon(
                     Icons.account_box_outlined,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
                 ListTileSideNavDrawer(
@@ -123,7 +123,7 @@ class SideBarDrawer extends StatelessWidget {
                   screenName: YourAccountScreen(),
                   iconName: Icon(
                     Icons.logout,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
               ],

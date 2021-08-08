@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
+import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
+
+final List<String> imagesList = [
+  'https://cdn.pixabay.com/photo/2020/11/01/23/22/breakfast-5705180_1280.jpg',
+  'https://cdn.pixabay.com/photo/2019/01/14/17/25/gelato-3932596_1280.jpg',
+  'https://cdn.pixabay.com/photo/2017/04/04/18/07/ice-cream-2202561_1280.jpg',
+  'https://cdn.pixabay.com/photo/2017/12/27/07/07/brownie-3042106_1280.jpg'
+];
+final List<String> titles = [' Coffee ', ' Gelato ', ' Ice Cream ', 'Brownie'];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,49 +24,41 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          drawer: SideBarDrawer(),
-          appBar: AppBar(
-            title: Text(
-              "Helios",
-              style: TextStyle(fontFamily: "Lobster", fontSize: 35),
+        drawer: SideBarDrawer(),
+        appBar: AppBar(
+          title: Text(
+            "Helios",
+            style: TextStyle(fontFamily: "Lobster", fontSize: 35),
+          ),
+          centerTitle: false,
+          actions: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.search),
             ),
-            centerTitle: false,
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.search),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.add_shopping_cart),
+            )
+          ],
+        ),
+        body: SingleChildScrollView(
+          // <-- wrap this around
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.306,
+                width: double.infinity,
+                child: SliderCarouselWithDots(
+                  imageList: imagesList,
+                  titles: titles,
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.add_shopping_cart),
-              )
             ],
           ),
-          body: Container()),
+        ),
+      ),
     );
   }
 }
-
-// Widget buildSearchField() {
-//   final color = Colors.white;
-//
-//   return TextField(
-//     style: TextStyle(color: color),
-//     decoration: InputDecoration(
-//       contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-//       hintText: 'Search',
-//       hintStyle: TextStyle(color: color),
-//       prefixIcon: Icon(Icons.search, color: color),
-//       filled: true,
-//       fillColor: Colors.white12,
-//       enabledBorder: OutlineInputBorder(
-//         borderRadius: BorderRadius.circular(5),
-//         borderSide: BorderSide(color: color.withOpacity(0.7)),
-//       ),
-//       focusedBorder: OutlineInputBorder(
-//         borderRadius: BorderRadius.circular(5),
-//         borderSide: BorderSide(color: color.withOpacity(0.7)),
-//       ),
-//     ),
-//   );
-// }
