@@ -16,9 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Center(
         child: ElevatedButton(
           style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
           ),
-          child: Text("Get Started"),
+          child: Text("Press Here To Get Started"),
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => GoogleSignInScreen()));
