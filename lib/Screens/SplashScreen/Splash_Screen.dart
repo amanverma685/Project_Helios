@@ -12,8 +12,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.teal,
       child: Center(
         child: ElevatedButton(
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+          ),
           child: Text("Get Started"),
           onPressed: () {
             Navigator.push(context,

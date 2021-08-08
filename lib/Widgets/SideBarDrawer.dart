@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:helios/Constants/Constants.dart';
 import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
 import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
 import 'package:helios/Screens/PreviousOrders/PreviousOrdersScreen.dart';
@@ -7,6 +8,10 @@ import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
 import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
 
 class SideBarDrawer extends StatelessWidget {
+  final urlImage =
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
+  final name = 'Sarah Abs';
+  final email = 'sarah@abs.com';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,15 +43,30 @@ class SideBarDrawer extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 1,
+            flex: 4,
             child: Center(
               child: CircleAvatar(
-                foregroundImage: AssetImage("assets/images/profile.jpg"),
+                backgroundImage: NetworkImage(urlImage),
+                // foregroundImage: AssetImage("assets/images/profile.jpg"),
                 maxRadius: 60,
                 minRadius: 40,
               ),
             ),
           ),
+          Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  Text(
+                    name,
+                    style: sideBarStyleName,
+                  ),
+                  Text(
+                    email,
+                    style: sideBarStyleEmail,
+                  )
+                ],
+              )),
           Divider(
             endIndent: 20,
             color: Colors.blue,
@@ -54,12 +74,12 @@ class SideBarDrawer extends StatelessWidget {
             thickness: 2,
           ),
           Expanded(
-            flex: 4,
+            flex: 15,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ListTileSideNavDrawer(
-                  tileText: "Home View",
+                  tileText: "Home",
                   screenName: HomeScreen(),
                   iconName: Icon(
                     Icons.home_rounded,
@@ -78,7 +98,7 @@ class SideBarDrawer extends StatelessWidget {
                   tileText: "Offers",
                   screenName: OffersScreen(),
                   iconName: Icon(
-                    Icons.tag,
+                    Icons.offline_bolt_outlined,
                     color: Colors.teal,
                   ),
                 ),
@@ -98,12 +118,8 @@ class SideBarDrawer extends StatelessWidget {
                     color: Colors.teal,
                   ),
                 ),
-                Divider(
-                  height: MediaQuery.of(context).size.height * 0.34,
-                  color: Colors.white,
-                ),
                 ListTileSideNavDrawer(
-                  tileText: "Your Account",
+                  tileText: "Log Out",
                   screenName: YourAccountScreen(),
                   iconName: Icon(
                     Icons.logout,
@@ -133,21 +149,26 @@ class ListTileSideNavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        tileText,
-        style: TextStyle(fontSize: 20),
-      ),
-      onTap: () {
-        Navigator.pop(context);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => screenName,
+    return Padding(
+      padding: EdgeInsets.only(top: 4.0),
+      child: Material(
+        child: ListTile(
+          title: Text(
+            tileText,
+            style: TextStyle(fontSize: 20),
           ),
-        );
-      },
-      leading: iconName,
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => screenName,
+              ),
+            );
+          },
+          leading: iconName,
+        ),
+      ),
     );
   }
 }
