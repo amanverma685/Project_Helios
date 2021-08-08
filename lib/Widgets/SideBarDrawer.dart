@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
+import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
+import 'package:helios/Screens/PreviousOrders/PreviousOrdersScreen.dart';
+import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
+import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
 
 class SideBarDrawer extends StatelessWidget {
   @override
@@ -52,61 +58,54 @@ class SideBarDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                ListTile(
-                  title: Text(
-                    "Today's Deals",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onTap: () {},
-                  leading: Icon(
-                    Icons.home,
+                ListTileSideNavDrawer(
+                  tileText: "Home View",
+                  screenName: HomeScreen(),
+                  iconName: Icon(
+                    Icons.home_rounded,
                     color: Colors.teal,
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    "Offers",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onTap: () {},
-                  leading: Icon(
-                    Icons.ac_unit_rounded,
+                ListTileSideNavDrawer(
+                  tileText: "Deals For You",
+                  screenName: TodaysDeals(),
+                  iconName: Icon(
+                    Icons.tag,
                     color: Colors.teal,
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    "Previous Orders",
-                    style: TextStyle(fontSize: 20),
+                ListTileSideNavDrawer(
+                  tileText: "Offers",
+                  screenName: OffersScreen(),
+                  iconName: Icon(
+                    Icons.tag,
+                    color: Colors.teal,
                   ),
-                  onTap: () {},
-                  leading: Icon(
+                ),
+                ListTileSideNavDrawer(
+                  tileText: "Previous Orders",
+                  screenName: PreviousOrdersScreen(),
+                  iconName: Icon(
                     Icons.delivery_dining,
                     color: Colors.teal,
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    "Your Account",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onTap: () {},
-                  leading: Icon(
+                ListTileSideNavDrawer(
+                  tileText: "Your Account",
+                  screenName: YourAccountScreen(),
+                  iconName: Icon(
                     Icons.account_box_outlined,
                     color: Colors.teal,
                   ),
                 ),
                 Divider(
-                  height: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.34,
                   color: Colors.white,
                 ),
-                ListTile(
-                  title: Text(
-                    "Log Out",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onTap: () {},
-                  leading: Icon(
+                ListTileSideNavDrawer(
+                  tileText: "Your Account",
+                  screenName: YourAccountScreen(),
+                  iconName: Icon(
                     Icons.logout,
                     color: Colors.teal,
                   ),
@@ -116,6 +115,39 @@ class SideBarDrawer extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ListTileSideNavDrawer extends StatelessWidget {
+  const ListTileSideNavDrawer({
+    Key? key,
+    required this.tileText,
+    required this.screenName,
+    required this.iconName,
+  }) : super(key: key);
+
+  final String tileText;
+  final Widget screenName;
+  final Icon iconName;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        tileText,
+        style: TextStyle(fontSize: 20),
+      ),
+      onTap: () {
+        Navigator.pop(context);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => screenName,
+          ),
+        );
+      },
+      leading: iconName,
     );
   }
 }

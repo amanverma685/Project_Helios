@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
 
-class OffersScreen extends StatefulWidget {
-  const OffersScreen({Key? key}) : super(key: key);
+class YourAccountScreen extends StatefulWidget {
+  const YourAccountScreen({Key? key}) : super(key: key);
 
   @override
-  _OffersScreenState createState() => _OffersScreenState();
+  _YourAccountScreenState createState() => _YourAccountScreenState();
 }
 
-class _OffersScreenState extends State<OffersScreen> {
+class _YourAccountScreenState extends State<YourAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,7 +16,7 @@ class _OffersScreenState extends State<OffersScreen> {
         drawer: SideBarDrawer(),
         appBar: AppBar(
           title: Text(
-            "Offers only for you",
+            "My Profile",
           ),
           centerTitle: false,
           actions: [
