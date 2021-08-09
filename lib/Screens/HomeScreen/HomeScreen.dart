@@ -52,8 +52,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Categories"),
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Categories",
+                      style: TextStyle(fontFamily: 'IndieFlower', fontSize: 30),
+                    ),
+                    TextButton(onPressed: () {}, child: Text("View More"))
+                  ],
+                ),
               ),
               Container(
                 height: MediaQuery.of(context).size.height * .25,
