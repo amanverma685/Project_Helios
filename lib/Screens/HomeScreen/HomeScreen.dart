@@ -39,116 +39,132 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.306,
-                width: double.infinity,
-                child: SliderCarouselWithDots(
-                  imageList: imagesList,
-                  titles: titles,
+        body: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.306,
+                  width: double.infinity,
+                  child: SliderCarouselWithDots(
+                    imageList: imagesList,
+                    titles: titles,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Categories",
-                      style: TextStyle(
-                          fontFamily: 'IndieFlower',
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    TextButton(onPressed: () {}, child: Text("View More"))
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Categories",
+                        style: TextStyle(
+                            fontFamily: 'IndieFlower',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(onPressed: () {}, child: Text("View More"))
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * .25,
-                width: double.infinity,
-                child: GridView.count(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 4.0,
-                  children: List.generate(categoryCardImages.length, (index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CategoryItemScreen(
-                                  itemCategoryName[index],
-                                  categoryCardImages[index])),
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 7,
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(25.0),
+                Container(
+                  height: MediaQuery.of(context).size.height * .25,
+                  width: double.infinity,
+                  child: GridView.count(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 4.0,
+                    children: List.generate(categoryCardImages.length, (index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CategoryItemScreen(
+                                    itemCategoryName[index],
+                                    categoryCardImages[index])),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 7,
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  child: Hero(
-                                    tag: itemCategoryName[index],
-                                    child: CachedNetworkImage(
-                                      imageUrl: categoryCardImages[index],
-                                      placeholder: (context, url) => Center(
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 5,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(25.0),
+                                    ),
+                                    child: Hero(
+                                      tag: itemCategoryName[index],
+                                      child: CachedNetworkImage(
+                                        imageUrl: categoryCardImages[index],
+                                        placeholder: (context, url) => Center(
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 5,
+                                          ),
                                         ),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                        fit: BoxFit.cover,
+                                        width: double.infinity,
                                       ),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
-                                      fit: BoxFit.cover,
-                                      width: double.infinity,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Text(
-                                itemCategoryName[index],
-                              ),
-                            )
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  itemCategoryName[index],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Bestseller Products",
+                        style: TextStyle(
+                            fontFamily: 'IndieFlower',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(Icons.star, color: Colors.orange),
+                            Icon(Icons.star, color: Colors.orange),
+                            Icon(Icons.star, color: Colors.orange),
+                            Icon(Icons.star, color: Colors.orange),
+                            Icon(Icons.star, color: Colors.orange)
                           ],
                         ),
                       ),
-                    );
-                  }),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Our Products",
-                      style: TextStyle(
-                          fontFamily: 'IndieFlower',
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    TextButton(onPressed: () {}, child: Text("View More"))
-                  ],
-                ),
-              ),
-            ],
+                Column(
+                  children: [],
+                )
+              ],
+            ),
           ),
         ),
       ),
