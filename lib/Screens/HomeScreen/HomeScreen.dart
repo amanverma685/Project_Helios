@@ -72,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MediaQuery.of(context).size.height * .25,
                   width: double.infinity,
                   child: GridView.count(
+                    physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 4,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 4.0,
@@ -160,9 +161,94 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                Column(
-                  children: [],
-                )
+                //BestSellar Category Grid View
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      GridView.count(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 4.0,
+                        children:
+                            List.generate(categoryCardImages.length, (index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CategoryItemScreen(
+                                        bestSellerProductNames[index],
+                                        bestsellerProductsImages[index])),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 7,
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(25.0),
+                                        ),
+                                        child: Hero(
+                                          tag: bestSellerProductNames[index],
+                                          child: CachedNetworkImage(
+                                            imageUrl:
+                                                bestsellerProductsImages[index],
+                                            placeholder: (context, url) =>
+                                                Center(
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 5,
+                                              ),
+                                            ),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    Icon(Icons.error),
+                                            fit: BoxFit.cover,
+                                            width: double.infinity,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text(
+                                      bestSellerProductNames[index],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                    height: 100,
+                    width: double.infinity,
+                    color: Colors.deepPurple,
+                    child: Center(
+                      child: Text(
+                        "Helios",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                    ))
               ],
             ),
           ),
