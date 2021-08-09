@@ -31,32 +31,34 @@ class CategoryItemScreen extends StatelessWidget {
             )
           ],
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(itemCategoryName),
-            Container(
-              height: 300,
-              width: 200,
-              child: Center(
-                child: Hero(
-                  tag: itemCategoryName,
-                  child: CachedNetworkImage(
-                    imageUrl: categoryCardImage,
-                    placeholder: (context, url) => Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 5,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(itemCategoryName),
+              Container(
+                height: 300,
+                width: 200,
+                child: Center(
+                  child: Hero(
+                    tag: itemCategoryName,
+                    child: CachedNetworkImage(
+                      imageUrl: categoryCardImage,
+                      placeholder: (context, url) => Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 5,
+                        ),
                       ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      fit: BoxFit.cover,
+                      width: double.infinity,
                     ),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
-                    fit: BoxFit.cover,
-                    width: double.infinity,
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

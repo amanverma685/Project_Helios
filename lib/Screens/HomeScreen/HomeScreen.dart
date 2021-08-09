@@ -58,7 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       "Categories",
-                      style: TextStyle(fontFamily: 'IndieFlower', fontSize: 30),
+                      style: TextStyle(
+                          fontFamily: 'IndieFlower',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
                     ),
                     TextButton(onPressed: () {}, child: Text("View More"))
                   ],
@@ -127,6 +130,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   }),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Our Products",
+                      style: TextStyle(
+                          fontFamily: 'IndieFlower',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    TextButton(onPressed: () {}, child: Text("View More"))
+                  ],
                 ),
               ),
             ],
