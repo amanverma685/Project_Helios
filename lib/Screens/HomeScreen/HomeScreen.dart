@@ -172,8 +172,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisCount: 2,
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 4.0,
-                        children:
-                            List.generate(categoryCardImages.length, (index) {
+                        children: List.generate(bestsellerProductsImages.length,
+                            (index) {
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(

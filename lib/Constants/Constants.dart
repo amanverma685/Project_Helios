@@ -51,8 +51,6 @@ final List<String> bestsellerProductsImages = [
   'https://www.bevindustry.com/ext/resources/issues/2020/July/2020-SOI-BOTTLED-WATER-Bubly_Aquafina.jpg?1593011424',
   'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-Spindrift.png?w=525',
   'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-JustWater.png.png?w=525',
-  'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-Waterloo.png?w=525',
-  'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-Ugly.png?w=525',
   'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-Polar.png?w=525'
 ];
 
