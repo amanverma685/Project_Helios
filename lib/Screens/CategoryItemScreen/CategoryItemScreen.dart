@@ -40,16 +40,19 @@ class CategoryItemScreen extends StatelessWidget {
               height: 300,
               width: 200,
               child: Center(
-                child: CachedNetworkImage(
-                  imageUrl: categoryCardImage,
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 5,
+                child: Hero(
+                  tag: itemCategoryName,
+                  child: CachedNetworkImage(
+                    imageUrl: categoryCardImage,
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 5,
+                      ),
                     ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                  fit: BoxFit.cover,
-                  width: double.infinity,
                 ),
               ),
             )
