@@ -1,14 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:helios/Constants/Constants.dart';
+import 'package:helios/Constants/Products.dart';
+import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
+import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
 import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
-
-final List<String> imagesList = [
-  'https://cdn.pixabay.com/photo/2020/11/01/23/22/breakfast-5705180_1280.jpg',
-  'https://cdn.pixabay.com/photo/2019/01/14/17/25/gelato-3932596_1280.jpg',
-  'https://cdn.pixabay.com/photo/2017/04/04/18/07/ice-cream-2202561_1280.jpg',
-  'https://cdn.pixabay.com/photo/2017/12/27/07/07/brownie-3042106_1280.jpg'
-];
-final List<String> titles = [' Coffee ', ' Gelato ', ' Ice Cream ', 'Brownie'];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -43,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         body: SingleChildScrollView(
-          // <-- wrap this around
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -53,6 +49,71 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SliderCarouselWithDots(
                   imageList: imagesList,
                   titles: titles,
+                ),
+              ),
+              Text("Categories"),
+              Container(
+                height: MediaQuery.of(context).size.height * .24,
+                width: double.infinity,
+                child: GridView.count(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 4.0,
+                  children: List.generate(categoryCardImages.length, (index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CategoryItemScreen(
+                                  itemCategoryName[index],
+                                  categoryCardImages[index])),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 15,
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(25.0),
+                                  ),
+                                  child: Hero(
+                                    tag: itemCategoryName[index],
+                                    child: CachedNetworkImage(
+                                      imageUrl: categoryCardImages[index],
+                                      placeholder: (context, url) => Center(
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 5,
+                                        ),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                itemCategoryName[index],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               ),
             ],

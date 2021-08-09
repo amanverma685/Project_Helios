@@ -1,15 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:helios/Constants/Constants.dart';
 
 class SliderCarouselWithDots extends StatefulWidget {
-  final List<String> imageList;
-  final List<String> titles;
-
   SliderCarouselWithDots(
       {Key? key, required this.titles, required this.imageList})
       : super(key: key);
+  final List<String> imageList;
+  final List<String> titles;
 
   @override
   _SliderCarouselWithDotsState createState() => _SliderCarouselWithDotsState();
@@ -17,6 +15,7 @@ class SliderCarouselWithDots extends StatefulWidget {
 
 class _SliderCarouselWithDotsState extends State<SliderCarouselWithDots> {
   int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
