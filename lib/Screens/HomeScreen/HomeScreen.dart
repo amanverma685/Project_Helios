@@ -51,12 +51,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   titles: titles,
                 ),
               ),
-              Text("Categories"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Categories"),
+              ),
               Container(
-                height: MediaQuery.of(context).size.height * .24,
+                height: MediaQuery.of(context).size.height * .25,
                 width: double.infinity,
                 child: GridView.count(
                   crossAxisCount: 4,
+                  mainAxisSpacing: 10,
                   crossAxisSpacing: 4.0,
                   children: List.generate(categoryCardImages.length, (index) {
                     return GestureDetector(
@@ -76,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Expanded(
-                              flex: 15,
+                              flex: 7,
                               child: Card(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
@@ -104,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             Expanded(
-                              flex: 3,
+                              flex: 1,
                               child: Text(
                                 itemCategoryName[index],
                               ),
