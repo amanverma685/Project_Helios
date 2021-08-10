@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:helios/Constants/Constants.dart';
-import 'package:helios/Constants/Products.dart';
 import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
-import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
+import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
 
@@ -61,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Categories",
                         style: TextStyle(
                             fontFamily: 'IndieFlower',
-                            fontSize: 30,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                       TextButton(onPressed: () {}, child: Text("View More"))
@@ -74,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: GridView.count(
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 4,
-                    mainAxisSpacing: 10,
+                    mainAxisSpacing: 8,
                     crossAxisSpacing: 4.0,
                     children: List.generate(categoryCardImages.length, (index) {
                       return GestureDetector(
@@ -94,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: [
                               Expanded(
-                                flex: 7,
+                                flex: 9,
                                 child: Card(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
@@ -122,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Expanded(
-                                flex: 1,
+                                flex: 2,
                                 child: Text(
                                   itemCategoryName[index],
                                 ),
@@ -143,102 +142,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Bestseller Products",
                         style: TextStyle(
                             fontFamily: 'IndieFlower',
-                            fontSize: 30,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(Icons.star, color: Colors.orange),
-                            Icon(Icons.star, color: Colors.orange),
-                            Icon(Icons.star, color: Colors.orange),
-                            Icon(Icons.star, color: Colors.orange),
-                            Icon(Icons.star, color: Colors.orange)
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          Icon(Icons.star, color: Colors.orange),
+                          Icon(Icons.star, color: Colors.orange),
+                          Icon(Icons.star, color: Colors.orange),
+                          Icon(Icons.star, color: Colors.orange),
+                          Icon(Icons.star, color: Colors.orange)
+                        ],
                       ),
                     ],
                   ),
                 ),
-                //BestSellar Category Grid View
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 4.0,
-                        children: List.generate(bestsellerProductsImages.length,
-                            (index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CategoryItemScreen(
-                                        bestSellerProductNames[index],
-                                        bestsellerProductsImages[index])),
-                              );
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    flex: 7,
-                                    child: Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(25.0),
-                                        ),
-                                        child: Hero(
-                                          tag: bestSellerProductNames[index],
-                                          child: CachedNetworkImage(
-                                            imageUrl:
-                                                bestsellerProductsImages[index],
-                                            placeholder: (context, url) =>
-                                                Center(
-                                              child: CircularProgressIndicator(
-                                                strokeWidth: 5,
-                                              ),
-                                            ),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    Icon(Icons.error),
-                                            fit: BoxFit.cover,
-                                            width: double.infinity,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Text(
-                                      bestSellerProductNames[index],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    ],
-                  ),
-                ),
+
+                BestSellerGridViewWidget(), //BestSellar Category Grid View
                 Container(
                     height: 100,
                     width: double.infinity,

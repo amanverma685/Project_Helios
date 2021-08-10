@@ -25,7 +25,7 @@ class _SliderCarouselWithDotsState extends State<SliderCarouselWithDots> {
             CarouselSlider(
               options: CarouselOptions(
                 autoPlay: true,
-
+                viewportFraction: 0.96,
                 enlargeCenterPage: true,
                 //scrollDirection: Axis.vertical,
                 onPageChanged: (index, reason) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:helios/Constants/Constants.dart';
 import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
 import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
@@ -7,11 +6,15 @@ import 'package:helios/Screens/PreviousOrders/PreviousOrdersScreen.dart';
 import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
 import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
 
+import 'ListTileSideBarNavDrawer.dart';
+
 class SideBarDrawer extends StatelessWidget {
-  final urlImage =
+  // SideBarDrawer(this.urlImage, this.name, this.email);
+  final String urlImage =
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
-  final name = 'Sarah Abs';
-  final email = 'sarah@abs.com';
+
+  final String name = "Sarah Abs";
+  final String email = "sarah@abs.com";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,7 +57,7 @@ class SideBarDrawer extends StatelessWidget {
             ),
           ),
           Expanded(
-              flex: 1,
+              flex: 2,
               child: Column(
                 children: [
                   Text(
@@ -130,44 +133,6 @@ class SideBarDrawer extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ListTileSideNavDrawer extends StatelessWidget {
-  const ListTileSideNavDrawer({
-    Key? key,
-    required this.tileText,
-    required this.screenName,
-    required this.iconName,
-  }) : super(key: key);
-
-  final String tileText;
-  final Widget screenName;
-  final Icon iconName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 4.0),
-      child: Material(
-        child: ListTile(
-          title: Text(
-            tileText,
-            style: TextStyle(fontSize: 20),
-          ),
-          onTap: () {
-            Navigator.pop(context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => screenName,
-              ),
-            );
-          },
-          leading: iconName,
-        ),
       ),
     );
   }
