@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helios/Screens/SplashScreen/Splash_Screen.dart';
+import 'package:helios/Themes/DarkTheme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,6 +30,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // @override
+  // void initState() {
+  //   _read();
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return SplashScreen();

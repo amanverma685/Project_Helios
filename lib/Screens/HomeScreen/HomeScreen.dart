@@ -5,6 +5,7 @@ import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,11 +31,17 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.search),
+              child: IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {},
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.add_shopping_cart),
+              child: IconButton(
+                icon: Icon(Icons.add_shopping_cart_rounded),
+                onPressed: () {},
+              ),
             )
           ],
         ),
@@ -160,15 +167,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 BestSellerGridViewWidget(), //BestSellar Category Grid View
                 Container(
-                    height: 100,
-                    width: double.infinity,
-                    color: Colors.deepPurple,
-                    child: Center(
-                      child: Text(
-                        "Helios",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                    ))
+                  height: 100,
+                  width: double.infinity,
+                  color: Colors.deepPurple,
+                  child: Center(
+                    child: Text(
+                      "Helios",
+                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

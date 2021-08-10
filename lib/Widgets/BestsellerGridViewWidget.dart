@@ -61,23 +61,36 @@ class BestSellerGridViewWidget extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            textBaseline: TextBaseline.alphabetic,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: Text(
                                   bestSellerProductNames[index],
-                                  maxLines: 2,
                                   softWrap: true,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 14),
                                 ),
                               ),
                               Expanded(
                                   child: IconButton(
-                                color: Colors.black,
+                                color: Colors.blue,
                                 icon: Icon(Icons.add_shopping_cart),
-                                onPressed: () {},
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      backgroundColor: Colors.lightBlueAccent,
+                                      duration: Duration(seconds: 1),
+                                      content: Text(
+                                        'Adding your Item to Cart',
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                    ),
+                                  );
+                                },
                               ))
                             ],
                           ),
