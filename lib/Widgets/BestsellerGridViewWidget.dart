@@ -26,6 +26,10 @@ class BestSellerGridViewWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //       color: Colors.lightBlueAccent, spreadRadius: 3)
+                        // ],
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(20)),
                     child: Column(
@@ -34,6 +38,7 @@ class BestSellerGridViewWidget extends StatelessWidget {
                           flex: 10,
                           child: Card(
                             shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.pink, width: 1),
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                             child: ClipRRect(
@@ -61,23 +66,26 @@ class BestSellerGridViewWidget extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            textBaseline: TextBaseline.alphabetic,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            textBaseline: TextBaseline.ideographic,
                             children: [
                               Expanded(
                                 flex: 3,
-                                child: Text(
-                                  bestSellerProductNames[index],
-                                  softWrap: true,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Text(
+                                    bestSellerProductNames[index],
+                                    softWrap: true,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
+                                  ),
                                 ),
                               ),
                               Expanded(
                                   child: IconButton(
-                                color: Colors.blue,
+                                color: Colors.black,
                                 icon: Icon(Icons.add_shopping_cart),
                                 onPressed: () {
                                   ScaffoldMessenger.of(context).showSnackBar(
