@@ -37,8 +37,11 @@ class BestSellerGridViewWidget extends StatelessWidget {
                         Expanded(
                           flex: 10,
                           child: Card(
+                            elevation: 7,
+                            shadowColor: Colors.black,
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.pink, width: 1),
+                              side:
+                                  BorderSide(color: Colors.blueGrey, width: 1),
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                             child: ClipRRect(
@@ -91,7 +94,7 @@ class BestSellerGridViewWidget extends StatelessWidget {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       backgroundColor: Colors.lightBlueAccent,
-                                      duration: Duration(seconds: 1),
+                                      duration: Duration(milliseconds: 50),
                                       content: Text(
                                         'Adding your Item to Cart',
                                         style: TextStyle(color: Colors.black),

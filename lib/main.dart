@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:helios/Models/ThemeModel.dart';
+import 'package:helios/Models/UserModal.dart';
 import 'package:helios/Screens/SplashScreen/Splash_Screen.dart';
-import 'package:helios/Themes/DarkTheme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+
+import 'Models/CartModel.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<UserDataModel>(create: (context) => UserDataModel()),
+    ChangeNotifierProvider<AppTheme>(create: (context) => AppTheme()),
+    ChangeNotifierProvider<CartModel>(create: (context) => CartModel()),
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,9 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Helios',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: Provider.of<AppTheme>(context, listen: false).defaultTheme,
       home: MyHomePage(title: 'Helios'),
     );
   }

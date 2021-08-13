@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "278014343817",
+    "project_id": "helios-aqua",
+    "storage_bucket": "helios-aqua.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278014343817:android:d9cfd379e0e7ef911ae458",
+        "android_client_info": {
+          "package_name": "company.helios.project.helios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278014343817-ih6dbqv66t53ni3dtjq6orbqr223k9lm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "company.helios.project.helios",
+            "certificate_hash": "0de94ab5cfb35e970b9c76e5a90586249b4ba94d"
+          }
+        },
+        {
+          "client_id": "278014343817-87aatqvdjp1sp92at89g9mjpavgss2j7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPI9QwMsdnHjf6PGsp8tjKziXwtnprk1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278014343817-87aatqvdjp1sp92at89g9mjpavgss2j7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

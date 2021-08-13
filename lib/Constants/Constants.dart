@@ -74,3 +74,90 @@ final List<String> bestSellerProductNames = [
   'Helios Hydrogen Water',
   'Polar seltzer Water'
 ];
+
+List products = [
+  {
+    "ïd": "1",
+    "title": "Office Code",
+    "price": 234,
+    "size": "12",
+    "description": "This is the best product i 've",
+    "rating": 4.5,
+    "imageUrl":
+        "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
+    "color": "red",
+    "quantity": "1L",
+    "flavour": "Mint",
+    "isBestseller": "Yes"
+  },
+  {
+    "ïd": "2",
+    "title": "Office Code",
+    "price": 234,
+    "size": "12",
+    "description": "This is the best product i 've",
+    "rating": 4.5,
+    "imageUrl":
+        "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
+    "color": "red",
+    "quantity": "1L",
+    "flavour": "Mint",
+    "isBestseller": "Yes"
+  },
+  {
+    "ïd": "3",
+    "title": "Office Code",
+    "price": 234,
+    "size": "12",
+    "description": "This is the best product i 've",
+    "rating": 4.5,
+    "imageUrl":
+        "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
+    "color": "red",
+    "quantity": "1L",
+    "flavour": "Mint",
+    "isBestseller": "Yes"
+  },
+  {
+    "ïd": "4",
+    "title": "Office Code",
+    "price": 234,
+    "size": "12",
+    "description": "This is the best product i 've",
+    "rating": 4.5,
+    "imageUrl":
+        "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
+    "color": "red",
+    "quantity": "1L",
+    "flavour": "Mint",
+    "isBestseller": "Yes"
+  },
+  {
+    "ïd": "5",
+    "title": "Office Code",
+    "price": 234,
+    "size": "12",
+    "description": "This is the best product i 've",
+    "rating": 4.5,
+    "imageUrl":
+        "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
+    "color": "red",
+    "quantity": "1L",
+    "flavour": "Mint",
+    "isBestseller": "Yes"
+  },
+  {
+    "ïd": "6",
+    "title": "Office Code",
+    "price": 234,
+    "size": "12",
+    "description": "This is the best product i 've",
+    "rating": 4.5,
+    "imageUrl":
+        "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
+    "color": "red",
+    "quantity": "1L",
+    "flavour": "Mint",
+    "isBestseller": "Yes"
+  },
+];

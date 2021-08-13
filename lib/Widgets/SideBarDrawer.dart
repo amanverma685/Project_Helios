@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:helios/Constants/Constants.dart';
+import 'package:helios/Models/UserModal.dart';
 import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
 import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
 import 'package:helios/Screens/PreviousOrders/PreviousOrdersScreen.dart';
+import 'package:helios/Screens/SplashScreen/Splash_Screen.dart';
 import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
 import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
+import 'package:helios/Utils/Authentication.dart';
+import 'package:provider/provider.dart';
 
 import 'ListTileSideBarNavDrawer.dart';
 
-class SideBarDrawer extends StatelessWidget {
+class SideBarDrawer extends StatefulWidget {
   // SideBarDrawer(this.urlImage, this.name, this.email);
-  final String urlImage =
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
+  @override
+  _SideBarDrawerState createState() => _SideBarDrawerState();
+}
 
-  final String name = "Sarah Abs";
-  final String email = "sarah@abs.com";
+class _SideBarDrawerState extends State<SideBarDrawer> {
+  // final String urlImage =
+  //     'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
+  //
+  bool _isSigningOut = false;
+  //
+  // final String name = "Sarah Abs";
+  //
+  // final String email = "sarah@abs.com";
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,27 +62,28 @@ class SideBarDrawer extends StatelessWidget {
             flex: 4,
             child: Center(
               child: CircleAvatar(
-                backgroundImage: NetworkImage(urlImage),
-                // foregroundImage: AssetImage("assets/images/profile.jpg"),
+                backgroundImage:
+                    NetworkImage(Provider.of<UserDataModel>(context).photoUrl),
                 maxRadius: 60,
                 minRadius: 40,
               ),
             ),
           ),
           Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  Text(
-                    name,
-                    style: sideBarStyleName,
-                  ),
-                  Text(
-                    email,
-                    style: sideBarStyleEmail,
-                  )
-                ],
-              )),
+            flex: 2,
+            child: Column(
+              children: [
+                Text(
+                  Provider.of<UserDataModel>(context).name,
+                  style: sideBarStyleName,
+                ),
+                Text(
+                  Provider.of<UserDataModel>(context).email,
+                  style: sideBarStyleEmail,
+                ),
+              ],
+            ),
+          ),
           Divider(
             endIndent: 20,
             color: Colors.blue,
@@ -83,7 +97,7 @@ class SideBarDrawer extends StatelessWidget {
               children: [
                 ListTileSideNavDrawer(
                   tileText: "Home",
-                  screenName: HomeScreen(),
+                  screenName: TodaysDeals(),
                   iconName: Icon(
                     Icons.home_rounded,
                     color: Colors.blue,
@@ -121,12 +135,35 @@ class SideBarDrawer extends StatelessWidget {
                     color: Colors.blue,
                   ),
                 ),
-                ListTileSideNavDrawer(
-                  tileText: "Log Out",
-                  screenName: YourAccountScreen(),
-                  iconName: Icon(
-                    Icons.logout,
-                    color: Colors.blue,
+                Padding(
+                  padding: EdgeInsets.only(top: 4.0),
+                  child: Material(
+                    child: ListTile(
+                      title: Text(
+                        "Log Out",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      onTap: () async {
+                        Navigator.pop(context);
+                        setState(() {
+                          _isSigningOut = true;
+                        });
+                        await Authentication.signOut(context: context);
+                        setState(() {
+                          _isSigningOut = false;
+                        });
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => SplashScreen(),
+                          ),
+                        );
+                      },
+                      leading: Icon(
+                        Icons.logout,
+                        color: Colors.blue,
+                      ),
+                    ),
                   ),
                 ),
               ],

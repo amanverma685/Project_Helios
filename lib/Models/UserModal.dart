@@ -18,6 +18,8 @@ class UserDataModel extends ChangeNotifier {
     this.age = data['age'];
     this.mobileNumber = data['mobileNumber'];
     this.dateOfBirth = data['dateOfBirth'];
+    print(name);
+    print(email);
     notifyListeners();
   }
 }

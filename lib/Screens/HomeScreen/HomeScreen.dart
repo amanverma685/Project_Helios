@@ -1,14 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:helios/Constants/Constants.dart';
+import 'package:helios/Screens/CartScreen/CartScreen.dart';
 import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key, required User user})
+      : _user = user,
+        super(key: key);
+
+  final User _user;
   static const String routeName = '/homePage';
 
   @override
@@ -30,17 +35,24 @@ class _HomeScreenState extends State<HomeScreen> {
           centerTitle: false,
           actions: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 8.0),
               child: IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () {},
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(right: 8.0),
               child: IconButton(
                 icon: Icon(Icons.add_shopping_cart_rounded),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CartScreen(),
+                    ),
+                  );
+                },
               ),
             )
           ],
@@ -102,6 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 flex: 9,
                                 child: Card(
+                                  elevation: 4,
+                                  shadowColor: Colors.black,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
