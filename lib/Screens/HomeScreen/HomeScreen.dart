@@ -9,11 +9,8 @@ import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key, required User user})
-      : _user = user,
-        super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
-  final User _user;
   static const String routeName = '/homePage';
 
   @override

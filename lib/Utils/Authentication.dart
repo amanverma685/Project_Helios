@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:helios/Models/UserModal.dart';
 import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication {
   static Future<void> signOut({required BuildContext context}) async {
@@ -38,8 +39,6 @@ class Authentication {
   static Future<FirebaseApp> initializeFirebase({
     required BuildContext context,
   }) async {
-    var data = new Map();
-
     FirebaseApp firebaseApp = await Firebase.initializeApp();
 
     User? user = FirebaseAuth.instance.currentUser;
@@ -47,7 +46,7 @@ class Authentication {
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(user: user),
+          builder: (context) => HomeScreen(),
         ),
       );
     }

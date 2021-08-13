@@ -9,6 +9,7 @@ import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
 import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
 import 'package:helios/Utils/Authentication.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ListTileSideBarNavDrawer.dart';
 
@@ -27,6 +28,15 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
   // final String name = "Sarah Abs";
   //
   // final String email = "sarah@abs.com";
+  void initialiseSharedPreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+  }
+
+  @override
+  void initState() {
+    initialiseSharedPreference();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +74,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
               child: CircleAvatar(
                 backgroundImage:
                     NetworkImage(Provider.of<UserDataModel>(context).photoUrl),
+                // NetworkImage(prefs.getString('photoUrl')!),
                 maxRadius: 60,
                 minRadius: 40,
               ),
