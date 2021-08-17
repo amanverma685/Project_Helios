@@ -40,19 +40,13 @@ class _GoogleSignInScreenState extends State<GoogleSignInScreen> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'FlutterFire',
+                      'Helios',
                       style: TextStyle(
                         color: CustomColors.firebaseYellow,
                         fontSize: 40,
                       ),
                     ),
-                    Text(
-                      'Authentication',
-                      style: TextStyle(
-                        color: CustomColors.firebaseOrange,
-                        fontSize: 40,
-                      ),
-                    ),
+                    
                   ],
                 ),
               ),

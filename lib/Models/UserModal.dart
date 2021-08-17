@@ -11,15 +11,11 @@ class UserDataModel extends ChangeNotifier {
   String mobileNumber = '+919179273937';
   String dateOfBirth = '27/04/1998';
 
-  void changeUserDetails(data) {
-    this.name = data['name'];
-    this.email = data['email'];
-    this.photoUrl = data['photoUrl'];
-    this.age = data['age'];
-    this.mobileNumber = data['mobileNumber'];
-    this.dateOfBirth = data['dateOfBirth'];
-    print(name);
-    print(email);
+  void changeUserDetails(email, name, photoUrl) {
+    this.name = name;
+    this.email = email;
+    this.photoUrl = photoUrl;
+
     notifyListeners();
   }
 }

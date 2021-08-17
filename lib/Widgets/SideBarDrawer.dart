@@ -1,42 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:helios/Constants/Constants.dart';
-import 'package:helios/Models/UserModal.dart';
-import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
-import 'package:helios/Screens/OffersScreen/OffersScreen.dart';
-import 'package:helios/Screens/PreviousOrders/PreviousOrdersScreen.dart';
+import 'package:helios/Models/NavigationItems.dart';
 import 'package:helios/Screens/SplashScreen/Splash_Screen.dart';
-import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
-import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
 import 'package:helios/Utils/Authentication.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ListTileSideBarNavDrawer.dart';
 
 class SideBarDrawer extends StatefulWidget {
-  // SideBarDrawer(this.urlImage, this.name, this.email);
+  const SideBarDrawer(
+      {Key? key,
+      required this.photoUrl,
+      required this.email,
+      required this.name})
+      : super(key: key);
+  final String photoUrl;
+  final String email;
+  final String name;
+
   @override
   _SideBarDrawerState createState() => _SideBarDrawerState();
 }
 
 class _SideBarDrawerState extends State<SideBarDrawer> {
-  // final String urlImage =
-  //     'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
-  //
   bool _isSigningOut = false;
-  //
-  // final String name = "Sarah Abs";
-  //
-  // final String email = "sarah@abs.com";
-  void initialiseSharedPreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-  }
-
-  @override
-  void initState() {
-    initialiseSharedPreference();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +59,9 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
             flex: 4,
             child: Center(
               child: CircleAvatar(
-                backgroundImage:
-                    NetworkImage(Provider.of<UserDataModel>(context).photoUrl),
-                // NetworkImage(prefs.getString('photoUrl')!),
+                backgroundImage: NetworkImage(widget.photoUrl),
+                // NetworkImage(Provider.of<UserDataModel>(context).photoUrl),
+                // NetworkImage(_pref.getString('photoUrl')!),
                 maxRadius: 60,
                 minRadius: 40,
               ),
@@ -85,11 +72,13 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
             child: Column(
               children: [
                 Text(
-                  Provider.of<UserDataModel>(context).name,
+                  widget.name,
+                  // Provider.of<UserDataModel>(context).name,
                   style: sideBarStyleName,
                 ),
                 Text(
-                  Provider.of<UserDataModel>(context).email,
+                  widget.email,
+                  // Provider.of<UserDataModel>(context).email,
                   style: sideBarStyleEmail,
                 ),
               ],
@@ -108,7 +97,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
               children: [
                 ListTileSideNavDrawer(
                   tileText: "Home",
-                  screenName: TodaysDeals(),
+                  screenName: NavigationItem.homeScreen,
                   iconName: Icon(
                     Icons.home_rounded,
                     color: Colors.blue,
@@ -116,7 +105,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
                 ),
                 ListTileSideNavDrawer(
                   tileText: "Deals For You",
-                  screenName: TodaysDeals(),
+                  screenName: NavigationItem.dealsForYou,
                   iconName: Icon(
                     Icons.tag,
                     color: Colors.blue,
@@ -124,7 +113,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
                 ),
                 ListTileSideNavDrawer(
                   tileText: "Offers",
-                  screenName: OffersScreen(),
+                  screenName: NavigationItem.offers,
                   iconName: Icon(
                     Icons.offline_bolt_outlined,
                     color: Colors.blue,
@@ -132,7 +121,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
                 ),
                 ListTileSideNavDrawer(
                   tileText: "Previous Orders",
-                  screenName: PreviousOrdersScreen(),
+                  screenName: NavigationItem.previousOrders,
                   iconName: Icon(
                     Icons.delivery_dining,
                     color: Colors.blue,
@@ -140,7 +129,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
                 ),
                 ListTileSideNavDrawer(
                   tileText: "Your Account",
-                  screenName: YourAccountScreen(),
+                  screenName: NavigationItem.yourAccount,
                   iconName: Icon(
                     Icons.account_box_outlined,
                     color: Colors.blue,

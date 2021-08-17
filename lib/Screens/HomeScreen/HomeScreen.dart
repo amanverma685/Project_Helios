@@ -7,6 +7,7 @@ import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,42 +19,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex = 3;
+  void setIsLoggedIn(dataToSet) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('userIsLoggedIn', dataToSet);
+  }
+
+  @override
+  void initState() {
+    setIsLoggedIn(true);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: SideBarDrawer(),
-        appBar: AppBar(
-          title: Text(
-            "Helios",
-            style: TextStyle(fontFamily: "Lobster", fontSize: 35),
-          ),
-          centerTitle: false,
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(left: 8.0),
-              child: IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {},
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(right: 8.0),
-              child: IconButton(
-                icon: Icon(Icons.add_shopping_cart_rounded),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CartScreen(),
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
         body: Container(
           child: SingleChildScrollView(
             child: Column(

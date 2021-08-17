@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
+import 'package:helios/Screens/LandingScreen/LandingScreen.dart';
 import 'package:helios/Utils/Authentication.dart';
 
 class GoogleSignInButton extends StatefulWidget {
@@ -51,7 +51,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 if (user != null) {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => HomeScreen(),
+                      builder: (context) => MainPage(),
                     ),
                   );
                 }

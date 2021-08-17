@@ -3,9 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:helios/Models/UserModal.dart';
-import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
-import 'package:provider/provider.dart';
+import 'package:helios/Screens/LandingScreen/LandingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication {
@@ -46,7 +44,7 @@ class Authentication {
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => MainPage(),
         ),
       );
     }
@@ -75,8 +73,11 @@ class Authentication {
       try {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
-
         user = userCredential.user;
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('email', user!.email!);
+        prefs.setString('photoUrl', user.photoURL!);
+        prefs.setString('name', user.displayName!);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           // handle the error here

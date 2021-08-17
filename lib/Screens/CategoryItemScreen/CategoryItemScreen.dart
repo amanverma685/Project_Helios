@@ -15,7 +15,6 @@ class CategoryItemScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: SideBarDrawer(),
         appBar: AppBar(
           title: Text(
             "Helios",

@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:helios/Models/NavigationItems.dart';
+import 'package:helios/Utils/NavigationProvider.dart';
+import 'package:provider/provider.dart';
 
 class ListTileSideNavDrawer extends StatelessWidget {
-  const ListTileSideNavDrawer({
-    Key? key,
-    required this.tileText,
-    required this.screenName,
-    required this.iconName,
-  }) : super(key: key);
+  const ListTileSideNavDrawer(
+      {Key? key,
+      required this.tileText,
+      required this.screenName,
+      required this.iconName})
+      : super(key: key);
 
   final String tileText;
-  final Widget screenName;
+  final NavigationItem screenName;
   final Icon iconName;
+
+  void selectItem(BuildContext context, NavigationItem item) {
+    final provider = Provider.of<NavigationProvider>(context, listen: false);
+    provider.setNavigationItem(item);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +31,15 @@ class ListTileSideNavDrawer extends StatelessWidget {
             style: TextStyle(fontSize: 20),
           ),
           onTap: () {
+            selectItem(context, screenName);
             Navigator.pop(context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => screenName,
-              ),
-            );
+            //
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) => screenName,
+            //   ),
+            // );
           },
           leading: iconName,
         ),

@@ -14,17 +14,9 @@ class _TodaysDealsState extends State<TodaysDeals> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: SideBarDrawer(),
-        appBar: AppBar(
-          title: Text("Deals For You"),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.add_shopping_cart),
-            )
-          ],
+        body: Container(
+          color: Colors.pink,
         ),
-        body: Container(),
       ),
     );
   }

@@ -13,7 +13,6 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: SideBarDrawer(),
         appBar: AppBar(
           title: Text(
             "My Carts",
