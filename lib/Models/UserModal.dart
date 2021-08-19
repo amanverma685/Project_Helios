@@ -19,3 +19,18 @@ class UserDataModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class UserDetails {
+  String userName;
+  String userMobileNumber;
+  String userEmail;
+  String gender;
+  String dateOfBirth;
+
+  UserDetails(
+      {required this.userName,
+      required this.userMobileNumber,
+      required this.userEmail,
+      required this.gender,
+      required this.dateOfBirth});
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helios/Screens/HomeScreen/HomeScreen.dart';
+import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/PhoneOTPAuthentication.dart';
 import 'package:helios/Utils/Authentication.dart';
 import 'package:helios/Widgets/Google_SignIn_Button.dart';
 
@@ -46,7 +46,6 @@ class _GoogleSignInScreenState extends State<GoogleSignInScreen> {
                         fontSize: 40,
                       ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -65,6 +64,53 @@ class _GoogleSignInScreenState extends State<GoogleSignInScreen> {
                   );
                 },
               ),
+              TextButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MobileNumberAuthentication()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.phone_android_outlined,
+                            size: 35,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Sign in with Number',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

@@ -26,7 +26,6 @@ class _MainPageState extends State<MainPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email')!;
     name = prefs.getString('name')!;
-    print("Called Again");
     photoUrl = prefs.getString('photoUrl')!;
     setState(() {});
   }

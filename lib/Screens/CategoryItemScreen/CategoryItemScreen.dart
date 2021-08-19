@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:helios/Widgets/SideBarDrawer.dart';
 
 // Shows the data of selected category products
 

@@ -3,7 +3,6 @@ import 'package:helios/Constants/Constants.dart';
 import 'package:helios/Models/NavigationItems.dart';
 import 'package:helios/Screens/SplashScreen/Splash_Screen.dart';
 import 'package:helios/Utils/Authentication.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ListTileSideBarNavDrawer.dart';
 
