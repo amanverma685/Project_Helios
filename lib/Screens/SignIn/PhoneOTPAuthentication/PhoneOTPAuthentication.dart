@@ -125,6 +125,7 @@ class _MobileNumberAuthenticationState
                       child: ElevatedButton(
                         child: Text('Submit'),
                         onPressed: () async {
+                          FocusScope.of(context).requestFocus(FocusNode());
                           if (_formKey.currentState!.validate()) {
                             await verifyPhoneNumber();
                           }
