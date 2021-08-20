@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+final BoxDecoration pinPutDecoration = BoxDecoration(
+  color: const Color.fromRGBO(43, 46, 66, 1),
+  borderRadius: BorderRadius.circular(10.0),
+  border: Border.all(
+    color: const Color.fromRGBO(126, 203, 224, 1),
+  ),
+);
 TextStyle sideBarStyleName =
     TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 TextStyle sideBarStyleEmail = TextStyle(fontSize: 15);

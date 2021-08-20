@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:helios/Screens/LandingScreen/LandingScreen.dart';
+import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/OTPScreen.dart';
 
 class MobileNumberAuthentication extends StatefulWidget {
   const MobileNumberAuthentication({Key? key}) : super(key: key);
@@ -12,48 +13,11 @@ class MobileNumberAuthentication extends StatefulWidget {
 
 class _MobileNumberAuthenticationState
     extends State<MobileNumberAuthentication> {
-  late String userName;
-  late String userMobileNumber;
-  late String userEmail;
-  late String gender;
-  late String dateOfBirth;
-  late String smaCode;
-
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
-
-  Future verifyPhoneNumber() async {
-    await auth.verifyPhoneNumber(
-        timeout: const Duration(seconds: 60),
-        phoneNumber: '+919179273937',
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          print("Inside Credential");
-          await auth.signInWithCredential(credential);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MainPage()),
-          );
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          if (e.code == 'invalid-phone-number') {
-            print('The provided phone number is not valid.');
-          }
-        },
-        codeSent: (String verificationId, int? resendToken) async {
-          // Update the UI - wait for the user to enter the SMS code
-          String smsCode = 'xxxx';
-
-          // Create a PhoneAuthCredential with the code
-          PhoneAuthCredential credential = PhoneAuthProvider.credential(
-              verificationId: verificationId, smsCode: smsCode);
-
-          // Sign the user in (or link) with the credential
-          await auth.signInWithCredential(credential);
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          // Auto-resolution timed out...
-        });
-  }
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,31 +33,31 @@ class _MobileNumberAuthenticationState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     TextFormField(
-                      decoration: const InputDecoration(
-                        icon: const Icon(Icons.person),
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.person),
                         hintText: 'Enter your full name',
                         labelText: 'Name',
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Please Enter Your Name';
                         }
                         return null;
                       },
-                      onSaved: (value) {
-                        userName = value.toString();
-                      },
                     ),
                     TextFormField(
+                      controller: phoneController,
                       keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        icon: const Icon(Icons.phone),
+                      decoration: InputDecoration(
+                        prefix: Padding(
+                          padding: EdgeInsets.all(4),
+                          child: Text('+91'),
+                        ),
+                        icon: Icon(Icons.phone),
                         hintText: 'Enter your phone number',
                         labelText: 'Phone',
                       ),
-                      onSaved: (value) {
-                        userMobileNumber = value.toString();
-                      },
                       validator: (value) {
                         if (value!.isEmpty || value.length > 10) {
                           return 'Please enter valid phone number';
@@ -102,15 +66,13 @@ class _MobileNumberAuthenticationState
                       },
                     ),
                     TextFormField(
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        icon: const Icon(Icons.calendar_today),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.calendar_today),
                         hintText: 'Enter your email',
                         labelText: 'Email',
                       ),
-                      onSaved: (value) {
-                        userEmail = value.toString();
-                      },
                       validator: (value) {
                         if (value!.isEmpty ||
                             value.length < 5 ||
@@ -127,7 +89,16 @@ class _MobileNumberAuthenticationState
                         onPressed: () async {
                           FocusScope.of(context).requestFocus(FocusNode());
                           if (_formKey.currentState!.validate()) {
-                            await verifyPhoneNumber();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OTPScreen(
+                                  phoneController.value.text,
+                                  nameController.value.text,
+                                  emailController.value.text,
+                                ),
+                              ),
+                            );
                           }
                         },
                       ),

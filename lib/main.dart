@@ -15,8 +15,7 @@ void main() {
           create: (context) => NavigationProvider(),
         ),
         ChangeNotifierProvider<UserDataModel>(
-          create: (context) => UserDataModel(),
-        ),
+            create: (context) => UserDataModel()),
         ChangeNotifierProvider<AppTheme>(create: (context) => AppTheme()),
         ChangeNotifierProvider<CartModel>(create: (context) => CartModel()),
       ],

@@ -25,8 +25,10 @@ class _MainPageState extends State<MainPage> {
   initialiseSharePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email')!;
+
     name = prefs.getString('name')!;
     photoUrl = prefs.getString('photoUrl')!;
+
     setState(() {});
   }
 
