@@ -4,6 +4,7 @@ import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/PhoneOTPAuthenticat
 import 'package:helios/Utils/Authentication.dart';
 import 'package:helios/Widgets/Google_SignIn_Button.dart';
 import 'package:helios/Widgets/ModalBottomSheet.dart';
+import 'package:lottie/lottie.dart';
 
 class GoogleSignInScreen extends StatefulWidget {
   const GoogleSignInScreen({Key? key}) : super(key: key);
@@ -35,12 +36,9 @@ class _GoogleSignInScreenState extends State<GoogleSignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
-                      flex: 1,
-                      child: Image.asset(
-                        'assets/images/firebase_logo.png',
-                        height: 160,
-                      ),
-                    ),
+                        flex: 1,
+                        child:
+                            Lottie.asset('assets/images/heliosBottles.json')),
                     SizedBox(height: 20),
                     Text(
                       'Helios',
