@@ -59,7 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  TextButton(onPressed: () {}, child: Text("View More"))
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoryItemScreen('all', ''),
+                          ),
+                        );
+                      },
+                      child: Text("View More"))
                 ],
               ),
             ),
