@@ -19,8 +19,8 @@ class _SliderCarouselWithDotsState extends State<SliderCarouselWithDots> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        body: Column(
+      child: SingleChildScrollView(
+        child: Column(
           children: [
             CarouselSlider(
               options: CarouselOptions(

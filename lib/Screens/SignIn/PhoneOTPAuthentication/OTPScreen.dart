@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:helios/Constants/Constants.dart';
@@ -19,7 +21,7 @@ class _OTPScreenState extends State<OTPScreen> {
   String _verificationCode = "";
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
-
+  int start = 60;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,18 +72,51 @@ class _OTPScreenState extends State<OTPScreen> {
                 }
               },
             ),
-          )
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "OTP will expire in",
+                  style: TextStyle(fontSize: 16, color: Colors.blueGrey),
+                ),
+                TextSpan(
+                  text: "  00 :$start ",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: "Second",
+                  style: TextStyle(fontSize: 16, color: Colors.blueGrey),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 
+  void startTimer() {
+    const onesec = Duration(seconds: 1);
+    Timer timer = Timer.periodic(onesec, (timer) {
+      if (start == 0) {
+        setState(() {
+          timer.cancel();
+          Navigator.pop(context);
+        });
+      } else {
+        setState(() {
+          start--;
+        });
+      }
+    });
+  }
+
   _verifyPhone() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('email', widget.userEmail);
-    prefs.setString('photoUrl',
-        'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT7MvLQ25XG5oN-ZIojLkZ_4VFKNcIahmIpmF72I3DOsNjNQIK2');
-    prefs.setString('name', widget.userName);
+    await setUserDetails();
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: '+91${widget.phone}',
         verificationCompleted: (PhoneAuthCredential credential) async {
@@ -107,6 +142,7 @@ class _OTPScreenState extends State<OTPScreen> {
           });
           showSnackBar(
               context, "Verification code has been sent on your phone Number");
+          startTimer();
         },
         codeAutoRetrievalTimeout: (String verificationID) {
           setState(() {
@@ -114,13 +150,21 @@ class _OTPScreenState extends State<OTPScreen> {
           });
           showSnackBar(context, "Timed Out. Please Try again...");
         },
-        timeout: Duration(seconds: 120));
+        timeout: Duration(seconds: 60));
   }
 
   @override
   void initState() {
     super.initState();
     _verifyPhone();
+  }
+
+  setUserDetails() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('email', widget.userEmail);
+    prefs.setString('photoUrl',
+        'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT7MvLQ25XG5oN-ZIojLkZ_4VFKNcIahmIpmF72I3DOsNjNQIK2');
+    prefs.setString('name', widget.userName);
   }
 
   void showSnackBar(BuildContext context, String text) {

@@ -21,17 +21,30 @@ class _MobileNumberAuthenticationState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: Form(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Form(
                 key: _formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10.0,
+                        top: 10,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Enter Your Details",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
+                    ),
                     TextFormField(
                       controller: nameController,
                       decoration: InputDecoration(
@@ -45,6 +58,15 @@ class _MobileNumberAuthenticationState
                         }
                         return null;
                       },
+                    ),
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.calendar_today),
+                        hintText: 'Enter your email',
+                        labelText: 'Email',
+                      ),
                     ),
                     TextFormField(
                       controller: phoneController,
@@ -65,25 +87,7 @@ class _MobileNumberAuthenticationState
                         return null;
                       },
                     ),
-                    TextFormField(
-                      controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.calendar_today),
-                        hintText: 'Enter your email',
-                        labelText: 'Email',
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            value.length < 5 ||
-                            !(value.contains("@"))) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
-                    ),
-                    new Container(
-                      padding: EdgeInsets.only(left: 150.0, top: 40.0),
+                    Center(
                       child: ElevatedButton(
                         child: Text('Submit'),
                         onPressed: () async {
@@ -105,9 +109,9 @@ class _MobileNumberAuthenticationState
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

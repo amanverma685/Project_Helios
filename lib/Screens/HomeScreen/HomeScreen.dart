@@ -4,6 +4,7 @@ import 'package:helios/Constants/Constants.dart';
 import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
+import 'package:helios/Widgets/LocationList.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,150 +25,150 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     setIsLoggedIn(true);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.306,
-                  width: double.infinity,
-                  child: SliderCarouselWithDots(
-                    imageList: imagesList,
-                    titles: titles,
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.295,
+              width: double.infinity,
+              child: SliderCarouselWithDots(
+                imageList: imagesList,
+                titles: titles,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Categories",
+                    style: TextStyle(
+                        fontFamily: 'IndieFlower',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Categories",
-                        style: TextStyle(
-                            fontFamily: 'IndieFlower',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      TextButton(onPressed: () {}, child: Text("View More"))
-                    ],
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * .25,
-                  width: double.infinity,
-                  child: GridView.count(
-                    physics: NeverScrollableScrollPhysics(),
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 4.0,
-                    children: List.generate(categoryCardImages.length, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CategoryItemScreen(
-                                    itemCategoryName[index],
-                                    categoryCardImages[index])),
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 9,
-                                child: Card(
-                                  elevation: 4,
-                                  shadowColor: Colors.black,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
+                  TextButton(onPressed: () {}, child: Text("View More"))
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              child: Container(
+                height: MediaQuery.of(context).size.height * .26,
+                width: double.infinity,
+                child: GridView.count(
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 4.0,
+                  children: List.generate(categoryCardImages.length, (index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoryItemScreen(
+                                itemCategoryName[index],
+                                categoryCardImages[index]),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 9,
+                              child: Card(
+                                elevation: 4,
+                                shadowColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(25.0),
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(25.0),
-                                    ),
-                                    child: Hero(
-                                      tag: itemCategoryName[index],
-                                      child: CachedNetworkImage(
-                                        imageUrl: categoryCardImages[index],
-                                        placeholder: (context, url) => Center(
-                                          child: CircularProgressIndicator(
-                                            strokeWidth: 5,
-                                          ),
+                                  child: Hero(
+                                    tag: itemCategoryName[index],
+                                    child: CachedNetworkImage(
+                                      imageUrl: categoryCardImages[index],
+                                      placeholder: (context, url) => Center(
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 5,
                                         ),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
-                                        fit: BoxFit.cover,
-                                        width: double.infinity,
                                       ),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
                                     ),
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  itemCategoryName[index],
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                itemCategoryName[index],
+                              ),
+                            )
+                          ],
                         ),
-                      );
-                    }),
-                  ),
+                      ),
+                    );
+                  }),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Bestseller Products",
+                    style: TextStyle(
+                        fontFamily: 'IndieFlower',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Row(
                     children: [
-                      Text(
-                        "Bestseller Products",
-                        style: TextStyle(
-                            fontFamily: 'IndieFlower',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: Colors.orange),
-                          Icon(Icons.star, color: Colors.orange),
-                          Icon(Icons.star, color: Colors.orange),
-                          Icon(Icons.star, color: Colors.orange),
-                          Icon(Icons.star, color: Colors.orange)
-                        ],
-                      ),
+                      Icon(Icons.star, color: Colors.orange),
+                      Icon(Icons.star, color: Colors.orange),
+                      Icon(Icons.star, color: Colors.orange),
+                      Icon(Icons.star, color: Colors.orange),
+                      Icon(Icons.star, color: Colors.orange)
                     ],
                   ),
-                ),
-
-                BestSellerGridViewWidget(), //BestSellar Category Grid View
-                Container(
-                  height: 100,
-                  width: double.infinity,
-                  color: Colors.deepPurple,
-                  child: Center(
-                    child: Text(
-                      "Helios",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                  ),
-                )
-              ],
+                ],
+              ),
             ),
-          ),
+
+            BestSellerGridViewWidget(), //BestSellar Category Grid View
+            Container(
+              height: 100,
+              width: double.infinity,
+              color: Colors.deepPurple,
+              child: Center(
+                child: Text(
+                  "Helios",
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

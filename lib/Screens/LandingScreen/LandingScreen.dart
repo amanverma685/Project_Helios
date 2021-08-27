@@ -39,44 +39,47 @@ class _MainPageState extends State<MainPage> {
   }
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: Scaffold(
-          drawer: SideBarDrawer(
-            email: email,
-            name: name,
-            photoUrl: photoUrl,
-          ),
-          appBar: AppBar(
-            title: Text(
-              "Helios",
-              style: TextStyle(fontFamily: "Lobster", fontSize: 35),
+  Widget build(BuildContext context) => Container(
+        color: Colors.transparent,
+        child: SafeArea(
+          child: Scaffold(
+            drawer: SideBarDrawer(
+              email: email,
+              name: name,
+              photoUrl: photoUrl,
             ),
-            centerTitle: false,
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {},
-                ),
+            appBar: AppBar(
+              title: Text(
+                "Helios",
+                style: TextStyle(fontFamily: "Lobster", fontSize: 35),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 8.0),
-                child: IconButton(
-                  icon: Icon(Icons.add_shopping_cart_rounded),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CartScreen(),
-                      ),
-                    );
-                  },
+              centerTitle: false,
+              actions: [
+                Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {},
+                  ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: IconButton(
+                    icon: Icon(Icons.add_shopping_cart_rounded),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CartScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+            body: buildPages(),
           ),
-          body: buildPages(),
         ),
       );
 

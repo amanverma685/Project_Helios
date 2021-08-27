@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helios/Widgets/UserAddressList.dart';
 
 class OffersScreen extends StatefulWidget {
   const OffersScreen({Key? key}) : super(key: key);
@@ -10,10 +11,6 @@ class OffersScreen extends StatefulWidget {
 class _OffersScreenState extends State<OffersScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Text("Offers Screen"),
-      ),
-    );
+    return Expansiontile();
   }
 }
