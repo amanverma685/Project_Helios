@@ -4,7 +4,6 @@ import 'package:helios/Constants/Constants.dart';
 import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
-import 'package:helios/Widgets/UserAddressList.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.295,
+                height: MediaQuery.of(context).size.height * 0.3,
                 width: double.infinity,
                 child: SliderCarouselWithDots(
                   imageList: imagesList,
