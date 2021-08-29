@@ -7,6 +7,7 @@ import 'package:helios/Screens/PreviousOrders/PreviousOrdersScreen.dart';
 import 'package:helios/Screens/TodaysDealsScreen/TodaysDeals.dart';
 import 'package:helios/Screens/YourAccountScreen/YourAccountScreen.dart';
 import 'package:helios/Utils/NavigationProvider.dart';
+import 'package:helios/Widgets/LocationModalBottomSheet.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
 import 'package:helios/Widgets/UserAddressList.dart';
 import 'package:location/location.dart';
@@ -23,12 +24,13 @@ class _MainPageState extends State<MainPage> {
   bool _isSigningOut = false;
   String name = "";
   String email = "";
+  var defaultLocation;
   String photoUrl =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMDoZqGk6An-DWrwWp2AQ1a2aug6xZ_IQSQWMO-1Cj1p0mwr2lPHLNWGbQknO-671N5es&usqp=CAU";
   initialiseSharePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email')!;
-
+    defaultLocation = prefs.getString('defaultLocation');
     name = prefs.getString('name')!;
     photoUrl = prefs.getString('photoUrl')!;
 
@@ -45,6 +47,11 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     initialiseSharePreference();
     super.initState();
+  }
+
+  void addLocation(defaultLocation) {
+    currentLocation = defaultLocation;
+    setState(() {});
   }
 
   @override
@@ -135,10 +142,11 @@ class _MainPageState extends State<MainPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                              child: Icon(
-                            Icons.where_to_vote_rounded,
-                            color: Colors.cyan,
-                          )),
+                            child: Icon(
+                              Icons.where_to_vote_rounded,
+                              color: Colors.cyan,
+                            ),
+                          ),
                           Expanded(
                             flex: 10,
                             child: Text(
@@ -158,12 +166,8 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                   ),
                                   builder: (BuildContext context) {
-                                    return Padding(
-                                      padding:
-                                          MediaQuery.of(context).viewInsets,
-                                      child: Container(
-                                          height: 300, child: Expansiontile()),
-                                    );
+                                    return LocationModalBottomSheet(
+                                        addLocation: addLocation);
                                   },
                                 );
                               },

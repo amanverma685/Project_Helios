@@ -3,7 +3,7 @@ import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/OTPScreen.dart';
 import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/PhoneOTPAuthentication.dart';
 import 'package:helios/Utils/Authentication.dart';
 import 'package:helios/Widgets/Google_SignIn_Button.dart';
-import 'package:helios/Widgets/ModalBottomSheet.dart';
+import 'package:helios/Widgets/LocationModalBottomSheet.dart';
 import 'package:lottie/lottie.dart';
 
 class GoogleSignInScreen extends StatefulWidget {
@@ -89,7 +89,9 @@ class _GoogleSignInScreenState extends State<GoogleSignInScreen> {
                         return Padding(
                           padding: MediaQuery.of(context).viewInsets,
                           child: Container(
-                              height: 300, child: MobileNumberAuthentication()),
+                            height: 300,
+                            child: MobileNumberAuthentication(),
+                          ),
                         );
                       },
                     );
