@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:helios/Constants/Constants.dart';
+import 'package:helios/Models/Get-All-Bestseller-Model.dart';
 import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
@@ -169,9 +170,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              BestSellerGridViewWidget(), //BestSellar Category Grid View
+              BestSellerGridViewWidget(),
+              //BestSeller Category Grid View
               Container(
-                height: 100,
                 width: double.infinity,
                 color: Colors.deepPurple,
                 child: Center(

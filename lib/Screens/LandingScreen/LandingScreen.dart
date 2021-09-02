@@ -31,6 +31,9 @@ class _MainPageState extends State<MainPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email')!;
     defaultLocation = prefs.getString('defaultLocation');
+    currentLocation = defaultLocation != null
+        ? defaultLocation
+        : "Please add any default Location";
     name = prefs.getString('name')!;
     photoUrl = prefs.getString('photoUrl')!;
 
@@ -46,6 +49,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     initialiseSharePreference();
+
     super.initState();
   }
 
@@ -93,8 +97,8 @@ class _MainPageState extends State<MainPage> {
                             child: TextField(
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(25.0)),
+                                    borderRadius: BorderRadius.circular(25.0),
+                                  ),
                                   contentPadding: EdgeInsets.all(10),
                                   suffixIcon: IconButton(
                                     icon: Icon(Icons.search),
@@ -185,8 +189,8 @@ class _MainPageState extends State<MainPage> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
+                        topLeft: Radius.circular(25),
+                        topRight: Radius.circular(25),
                       ),
                     ),
                     child: buildPages(),

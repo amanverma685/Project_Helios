@@ -16,6 +16,7 @@ final List<String> imagesList = [
   'https://cdn.pixabay.com/photo/2017/04/04/18/07/ice-cream-2202561_1280.jpg',
   'https://cdn.pixabay.com/photo/2017/12/27/07/07/brownie-3042106_1280.jpg'
 ];
+
 final List<String> titles = [' Coffee ', ' Gelato ', ' Ice Cream ', 'Brownie'];
 
 final List<String> categoryCardImages = [
@@ -84,89 +85,83 @@ final List<String> bestSellerProductNames = [
 
 List products = [
   {
-    "ïd": "1",
-    "title": "Office Code",
-    "price": 234,
-    "size": "12",
+    "productId": "1",
+    "title": "Helios Energy Drink",
     "description": "This is the best product i 've",
     "rating": 4.5,
     "imageUrl":
         "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
     "color": "red",
-    "quantity": "1L",
     "flavour": "Mint",
-    "isBestseller": "Yes"
+    "isBestseller": "Yes",
+    "availableVolumes": ["200 ml", "500 ml", "750 ml", "1 L", "2 L"],
+    "pricesAvailable": [20, 40, 60, 75, 140]
   },
   {
-    "ïd": "2",
+    "productId": "2",
     "title": "Office Code",
-    "price": 234,
-    "size": "12",
     "description": "This is the best product i 've",
     "rating": 4.5,
     "imageUrl":
         "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
     "color": "red",
-    "quantity": "1L",
     "flavour": "Mint",
-    "isBestseller": "Yes"
+    "isBestseller": "Yes",
+    "availableVolumes": ["200 ml", "500 ml", "750 ml", "1 L", "2 L"],
+    "pricesAvailable": [20, 40, 60, 75, 140]
   },
   {
-    "ïd": "3",
+    "productId": "3",
     "title": "Office Code",
-    "price": 234,
-    "size": "12",
     "description": "This is the best product i 've",
     "rating": 4.5,
     "imageUrl":
         "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
     "color": "red",
-    "quantity": "1L",
     "flavour": "Mint",
-    "isBestseller": "Yes"
+    "isBestseller": "Yes",
+    "availableVolumes": ["200 ml", "500 ml", "750 ml", "1 L", "2 L"],
+    "pricesAvailable": [20, 40, 60, 75, 140]
   },
   {
-    "ïd": "4",
+    "productId": "4",
     "title": "Office Code",
-    "price": 234,
-    "size": "12",
     "description": "This is the best product i 've",
     "rating": 4.5,
     "imageUrl":
         "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
     "color": "red",
-    "quantity": "1L",
     "flavour": "Mint",
-    "isBestseller": "Yes"
+    "isBestseller": "Yes",
+    "availableVolumes": ["200 ml", "500 ml", "750 ml", "1 L", "2 L"],
+    "pricesAvailable": [20, 40, 60, 75, 140]
   },
   {
-    "ïd": "5",
+    "productId": "5",
     "title": "Office Code",
-    "price": 234,
-    "size": "12",
     "description": "This is the best product i 've",
     "rating": 4.5,
     "imageUrl":
         "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
     "color": "red",
-    "quantity": "1L",
     "flavour": "Mint",
-    "isBestseller": "Yes"
+    "isBestseller": "Yes",
+    "availableVolumes": ["200 ml", "500 ml", "750 ml", "1 L", "2 L"],
+    "pricesAvailable": [20, 40, 60, 75, 140]
   },
   {
-    "ïd": "6",
+    "productId": "6",
     "title": "Office Code",
-    "price": 234,
-    "size": "12",
     "description": "This is the best product i 've",
     "rating": 4.5,
     "imageUrl":
         "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/04/353353-10-of-the-Best-FlavoredWaterBrands-ProductShot-FrozenGarden.png?w=525",
     "color": "red",
-    "quantity": "1L",
     "flavour": "Mint",
-    "isBestseller": "Yes"
-  },
+    "isBestseller": "Yes",
+    "availableVolumes": ["200 ml", "500 ml", "750 ml", "1 L", "2 L"],
+    "pricesAvailable": [20, 40, 60, 75, 140]
+  }
 ];
 
 List locationList = [
