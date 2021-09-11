@@ -27,7 +27,7 @@ class _SideBarDrawerState extends State<SideBarDrawer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.68,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(

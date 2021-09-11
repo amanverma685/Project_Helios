@@ -168,3 +168,5 @@ List locationList = [
   'Rajfamily ward no.-3 Khairagarh, 491881',
   'Deepak Nagar Near Shantiniketan Durg, 491001'
 ];
+
+List previousOrdersList = [];

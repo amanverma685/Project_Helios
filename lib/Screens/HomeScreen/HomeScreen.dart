@@ -5,6 +5,7 @@ import 'package:helios/Models/Get-All-Bestseller-Model.dart';
 import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Widgets/BestsellerGridViewWidget.dart';
 import 'package:helios/Widgets/Carousel.dart';
+import 'package:helios/Widgets/PreviousOrderItemsSideScrollWidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // Expansiontile(), Tile To add Address
 
               Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 8),
+                padding: EdgeInsets.only(left: 10.0, right: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -76,12 +77,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SingleChildScrollView(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * .26,
+                  height: MediaQuery.of(context).size.height * .27,
                   width: double.infinity,
                   child: GridView.count(
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 4,
-                    mainAxisSpacing: 8,
+                    mainAxisSpacing: 3,
                     crossAxisSpacing: 4.0,
                     children: List.generate(categoryCardImages.length, (index) {
                       return GestureDetector(
@@ -163,25 +164,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         Icon(Icons.star, color: Colors.orange),
                         Icon(Icons.star, color: Colors.orange),
                         Icon(Icons.star, color: Colors.orange),
-                        Icon(Icons.star, color: Colors.orange)
+                        Icon(Icons.star, color: Colors.blue)
                       ],
                     ),
                   ],
                 ),
               ),
+              Container(
+                child: previousOrdersList.length > 0
+                    ? PreviousOrderItemsSideScrollWidget(previousOrdersList)
+                    : null,
+              ),
 
               BestSellerGridViewWidget(),
               //BestSeller Category Grid View
-              Container(
-                width: double.infinity,
-                color: Colors.deepPurple,
-                child: Center(
-                  child: Text(
-                    "Helios",
-                    style: TextStyle(color: Colors.white, fontSize: 30),
-                  ),
-                ),
-              )
+              // Container(
+              //   width: double.infinity,
+              //   color: Colors.deepPurple,
+              //   child: Center(
+              //     child: Text(
+              //       "Helios",
+              //       style: TextStyle(color: Colors.white, fontSize: 30),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

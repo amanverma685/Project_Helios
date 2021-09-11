@@ -14,23 +14,8 @@ class CategoryItemScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Helios",
-            style: TextStyle(fontFamily: "Lobster", fontSize: 35),
-          ),
-          centerTitle: false,
-          actions: [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.search),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.add_shopping_cart),
-            )
-          ],
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //     onPressed: () {}, child: Icon(Icons.add_shopping_cart_rounded)),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

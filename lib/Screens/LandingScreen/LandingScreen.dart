@@ -10,11 +10,10 @@ import 'package:helios/Utils/NavigationProvider.dart';
 import 'package:helios/Widgets/LocationModalBottomSheet.dart';
 import 'package:helios/Widgets/SideBarDrawer.dart';
 import 'package:helios/Widgets/UserAddressList.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// e6:3d:e3:96:55:ef:bc:9e:88:d6:c5:24:03:c2:be:aa:99:f9:57:04:58:28:03:5f:a8:26:ea:90:38:94:6d:98
+//
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
@@ -49,7 +48,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     initialiseSharePreference();
-
     super.initState();
   }
 
@@ -58,10 +56,13 @@ class _MainPageState extends State<MainPage> {
     setState(() {});
   }
 
+  Color backColor = Colors.lightBlueAccent;
+
   @override
   Widget build(BuildContext context) => Container(
         child: SafeArea(
           child: Scaffold(
+            backgroundColor: backColor,
             key: scaffoldKey,
             drawer: SideBarDrawer(
               email: email,
@@ -74,10 +75,11 @@ class _MainPageState extends State<MainPage> {
                   Container(
                     height: 60,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
+                      color: backColor,
+                      // borderRadius: BorderRadius.only(
+                      //   bottomLeft: Radius.circular(20),
+                      //   bottomRight: Radius.circular(20),
+                      // ),
                     ),
                     width: double.infinity,
                     child: Row(
@@ -87,7 +89,10 @@ class _MainPageState extends State<MainPage> {
                             onPressed: () {
                               scaffoldKey.currentState!.openDrawer();
                             },
-                            icon: Icon(Icons.view_headline_outlined),
+                            icon: Icon(
+                              Icons.view_headline_outlined,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         Expanded(
@@ -137,28 +142,29 @@ class _MainPageState extends State<MainPage> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20.0), //Please Enter your loc.. padding
-                    child: Container(
-                      height: 50,
+                  Container(
+                    color: backColor,
+                    height: 50,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Icon(
                               Icons.where_to_vote_rounded,
-                              color: Colors.cyan,
+                              color: Colors.black,
                             ),
                           ),
                           Expanded(
-                            flex: 10,
+                            flex: 12,
                             child: Text(
                               "$currentLocation",
-                              style: TextStyle(color: Colors.blue),
+                              style: TextStyle(color: Colors.black),
                             ),
                           ),
                           Expanded(
+                            flex: 2,
                             child: IconButton(
                               onPressed: () {
                                 showModalBottomSheet<void>(
@@ -175,19 +181,20 @@ class _MainPageState extends State<MainPage> {
                                   },
                                 );
                               },
-                              icon: Icon(Icons.add_circle_outline_outlined),
+                              icon: Padding(
+                                padding: EdgeInsets.only(right: 10),
+                                child: Icon(Icons.add_circle_outline_outlined),
+                              ),
                             ),
                           ),
-                          Expanded(
-                            child: Text(""),
-                          )
                         ],
                       ),
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black, width: 2.5),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25),

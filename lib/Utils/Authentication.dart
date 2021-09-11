@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -74,8 +76,13 @@ class Authentication {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
         user = userCredential.user;
+        String token = await user!.getIdToken();
+        print(token.split(".")[0]);
+        print(token.split(".")[1]);
+        print(token.split(".")[2]);
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('email', user!.email!);
+        prefs.setString('email', user.email!);
         prefs.setString('photoUrl', user.photoURL!);
         prefs.setString('name', user.displayName!);
       } on FirebaseAuthException catch (e) {

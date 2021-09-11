@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:helios/Constants/Constants.dart';
 import 'package:helios/Models/Get-All-Bestseller-Model.dart';
-import 'package:helios/Screens/CategoryItemScreen/CategoryItemScreen.dart';
 import 'package:helios/Screens/ProductScreen/ProductScreen.dart';
 
 class BestSellerGridViewWidget extends StatefulWidget {
@@ -17,10 +15,10 @@ class BestSellerGridViewWidget extends StatefulWidget {
 class _BestSellerGridViewWidgetState extends State<BestSellerGridViewWidget> {
   var bestSellerProducts;
   int modHud = 0;
+
   fetchAllBestsellers() async {
     modHud = 1;
     bestSellerProducts = await fetchAllBestsellerProducts();
-    print(bestSellerProducts);
     modHud = 0;
     setState(() {});
   }
@@ -36,14 +34,18 @@ class _BestSellerGridViewWidgetState extends State<BestSellerGridViewWidget> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: modHud == 1
-          ? SpinKitFadingCircle(
-              itemBuilder: (BuildContext context, int modHud) {
-                return DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
-                  ),
-                );
-              },
+          ? Container(
+              height: 130,
+              child: SpinKitWave(
+                itemBuilder: (BuildContext context, int modHud) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: Colors.lightBlueAccent,
+                    ),
+                  );
+                },
+              ),
             )
           : Column(
               children: [
