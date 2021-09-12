@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/OTPScreen.dart';
 import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/PhoneOTPAuthentication.dart';
 import 'package:helios/Utils/Authentication.dart';
 import 'package:helios/Widgets/Google_SignIn_Button.dart';
-import 'package:helios/Widgets/LocationModalBottomSheet.dart';
 import 'package:lottie/lottie.dart';
 
 class GoogleSignInScreen extends StatefulWidget {

@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class OTPScreen extends StatefulWidget {
   final String phone;
   final String userName;
+
   final String userEmail;
   OTPScreen(this.phone, this.userName, this.userEmail);
   @override
@@ -19,6 +20,7 @@ class OTPScreen extends StatefulWidget {
 class _OTPScreenState extends State<OTPScreen> {
   final GlobalKey<ScaffoldState> _snackBarKey = GlobalKey<ScaffoldState>();
   String _verificationCode = "";
+  late Timer timer;
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
   int start = 60;
@@ -81,7 +83,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   style: TextStyle(fontSize: 16, color: Colors.blueGrey),
                 ),
                 TextSpan(
-                  text: "  00 :$start ",
+                  text: "  00 : $start ",
                   style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -100,19 +102,28 @@ class _OTPScreenState extends State<OTPScreen> {
   }
 
   void startTimer() {
-    const onesec = Duration(seconds: 1);
-    Timer timer = Timer.periodic(onesec, (timer) {
-      if (start == 0) {
-        setState(() {
-          timer.cancel();
+    const oneSec = const Duration(seconds: 1);
+    timer = new Timer.periodic(
+      oneSec,
+      (timer) {
+        if (start == 0) {
+          setState(() {
+            timer.cancel();
+          });
           Navigator.pop(context);
-        });
-      } else {
-        setState(() {
-          start--;
-        });
-      }
-    });
+        } else {
+          setState(() {
+            start--;
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 
   _verifyPhone() async {
@@ -125,7 +136,7 @@ class _OTPScreenState extends State<OTPScreen> {
               .then((value) async {
             if (value.user != null) {
               print(value.user);
-
+              timer.cancel();
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => MainPage()),
@@ -135,6 +146,8 @@ class _OTPScreenState extends State<OTPScreen> {
         },
         verificationFailed: (FirebaseAuthException e) {
           showSnackBar(context, e.toString());
+          Future.delayed(const Duration(seconds: 2), () => "");
+          Navigator.pop(context);
         },
         codeSent: (String verificationID, int? resendToken) {
           setState(() {

@@ -22,6 +22,7 @@ class SideBarDrawer extends StatefulWidget {
 }
 
 class _SideBarDrawerState extends State<SideBarDrawer> {
+  // ignore: unused_field
   bool _isSigningOut = false;
 
   @override

@@ -13,8 +13,6 @@ class LocationModalBottomSheet extends StatefulWidget {
 }
 
 class _LocationModalBottomSheetState extends State<LocationModalBottomSheet> {
-  final _formKey = GlobalKey<FormState>();
-
   Color activeColor = Colors.green;
 
   final TextEditingController locationController = TextEditingController();

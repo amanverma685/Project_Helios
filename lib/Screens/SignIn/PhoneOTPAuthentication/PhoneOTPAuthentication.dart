@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:helios/Screens/LandingScreen/LandingScreen.dart';
 import 'package:helios/Screens/SignIn/PhoneOTPAuthentication/OTPScreen.dart';
 
 class MobileNumberAuthentication extends StatefulWidget {
