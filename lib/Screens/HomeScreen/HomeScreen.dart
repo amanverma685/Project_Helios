@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.31,
+              height: MediaQuery.of(context).size.height * 0.34,
               width: double.infinity,
               child: SliderCarouselWithDots(
                 imageList: imagesList,

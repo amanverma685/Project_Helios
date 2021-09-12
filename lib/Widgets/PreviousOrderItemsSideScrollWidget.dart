@@ -42,9 +42,9 @@ class PreviousOrderItemsSideScrollWidget extends StatelessWidget {
                 itemCount: previousOrdersList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,
-                    childAspectRatio: .6,
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 10),
+                    childAspectRatio: .55,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5),
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8.0),
@@ -76,14 +76,14 @@ class PreviousOrderItemsSideScrollWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Expanded(
-                                    flex: 2,
+                                    flex: 3,
                                     child: Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Text(
                                         "Helios Mineral Water",
-                                        maxLines: 3,
+                                        maxLines: 2,
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
@@ -94,14 +94,13 @@ class PreviousOrderItemsSideScrollWidget extends StatelessWidget {
                                       child: Text(
                                         "Mint Flavour",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                        ),
+                                            fontSize: 15,
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Expanded(
                                         child: Padding(
@@ -114,14 +113,18 @@ class PreviousOrderItemsSideScrollWidget extends StatelessWidget {
                                           ),
                                         ),
                                       ),
+                                      SizedBox(
+                                        width: 12,
+                                      ),
                                       Expanded(
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 8.0),
                                           child: Text(
                                             "4/5",
                                             style: TextStyle(
-                                              fontSize: 18,
-                                            ),
+                                                color: Colors.teal,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                       ),
@@ -137,12 +140,14 @@ class PreviousOrderItemsSideScrollWidget extends StatelessWidget {
                                           "Rs.60/-",
                                           style: TextStyle(
                                               fontSize: 18,
+                                              color: Colors.green,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         IconButton(
                                           icon: Icon(
                                             Icons.add_shopping_cart,
                                             size: 25,
+                                            color: Colors.blue,
                                           ),
                                           onPressed: () {
                                             ScaffoldMessenger.of(context)

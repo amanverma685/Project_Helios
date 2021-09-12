@@ -17,7 +17,7 @@ class BestSellerGridViewWidget extends StatefulWidget {
 class _BestSellerGridViewWidgetState extends State<BestSellerGridViewWidget> {
   var bestSellerProducts;
   int modHud = 0;
-
+  bool isFavourite = false;
   fetchAllBestsellers() async {
     modHud = 1;
     bestSellerProducts = await fetchAllBestsellerProducts();
@@ -54,113 +54,173 @@ class _BestSellerGridViewWidgetState extends State<BestSellerGridViewWidget> {
             )
           : Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: GridView.count(
-                      physics: NeverScrollableScrollPhysics(),
-                      crossAxisCount: 2,
-                      shrinkWrap: true,
-                      mainAxisSpacing: 12,
-                      childAspectRatio: 0.65,
-                      scrollDirection: Axis.vertical,
-                      crossAxisSpacing: 10.0,
-                      children: List.generate(
-                          bestSellerProducts['responseData'].length, (index) {
-                        return GestureDetector(
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius: 2,
-                                    blurRadius: 8,
-                                    offset: Offset(
-                                        4, 3), // changes position of shadow
+                Container(
+                  child: GridView.count(
+                    physics: NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 0.5,
+                    scrollDirection: Axis.vertical,
+                    crossAxisSpacing: 4.0,
+                    children: List.generate(
+                        bestSellerProducts['responseData'].length, (index) {
+                      return GestureDetector(
+                        child: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
+                              border: Border.all(color: Colors.black),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.teal,
+                                  spreadRadius: 1,
+                                  blurRadius: 2,
+                                  offset: Offset(
+                                      4, 4), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10.0),
+                                  child: Expanded(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "4.5 ",
+                                              style: TextStyle(fontSize: 20),
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            )
+                                          ],
+                                        ),
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.favorite,
+                                            color: Colors.red,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ),
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(15.0),
-                                      child: Hero(
-                                        tag: bestSellerProducts['responseData']
-                                            [index]['productId'],
+                                ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(1.0),
+                                    child: Hero(
+                                      tag: bestSellerProducts['responseData']
+                                          [index]['productId'],
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(6.0),
                                         child: Container(
                                           height: 120,
-                                          width: 190,
+                                          width: 180,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(20)),
                                               image: DecorationImage(
-                                                  fit: BoxFit.cover,
+                                                  fit: BoxFit.fill,
                                                   image: CachedNetworkImageProvider(
                                                       bestSellerProducts[
                                                               'responseData']
                                                           [index]['imageUrl'])),
-                                              // boxShadow: [
-                                              //   BoxShadow(
-                                              //     color: Colors.black,
-                                              //     spreadRadius: 2,
-                                              //     blurRadius: 10,
-                                              //     offset: Offset(4,
-                                              //         3), // changes position of shadow
-                                              //   ),
-                                              // ],
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.lightBlueAccent,
+                                                  spreadRadius: 1,
+                                                  blurRadius: 1,
+                                                  offset: Offset(2,
+                                                      2), // changes position of shadow
+                                                ),
+                                              ],
                                               color: Colors.white,
                                               shape: BoxShape.rectangle),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        bestSellerProducts['responseData']
-                                            [index]['title'],
-                                        maxLines: 3,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 4),
+                                    child: Text(
+                                      bestSellerProducts['responseData'][index]
+                                          ['title'],
+                                      maxLines: 3,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Container(
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
                                       child: Text(
                                         "Rs.50/-",
-                                        maxLines: 2,
-                                        style: TextStyle(fontSize: 20),
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.blue),
                                       ),
                                     ),
-                                  )
-                                ],
-                              ),
+                                    Expanded(
+                                      child: Text(
+                                        "500ml",
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.blue),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Expanded(
+                                      child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text("Add to cart"),
+                                        Icon(Icons.shopping_cart)
+                                      ],
+                                    ),
+                                  )),
+                                )
+                              ],
                             ),
                           ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ProductScreen(
-                                  bestSellerProducts['responseData'][index],
-                                ),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductScreen(
+                                bestSellerProducts['responseData'][index],
                               ),
-                            );
-                          },
-                        );
-                      }),
-                    ),
+                            ),
+                          );
+                        },
+                      );
+                    }),
                   ),
                 ),
               ],
