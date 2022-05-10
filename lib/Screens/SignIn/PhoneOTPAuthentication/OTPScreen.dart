@@ -29,7 +29,7 @@ class _OTPScreenState extends State<OTPScreen> {
     return Scaffold(
       key: _snackBarKey,
       appBar: AppBar(
-        title: Text('OTP Verification'),
+        title: Text('Verifying your OTP'),
       ),
       body: Column(
         children: [
@@ -154,14 +154,14 @@ class _OTPScreenState extends State<OTPScreen> {
             _verificationCode = verificationID;
           });
           showSnackBar(
-              context, "Verification code has been sent on your phone Number");
+              context, "Verification code has been sent on your Phone Number");
           startTimer();
         },
         codeAutoRetrievalTimeout: (String verificationID) {
           setState(() {
             _verificationCode = verificationID;
           });
-          showSnackBar(context, "Timed Out. Please Try again...");
+          showSnackBar(context, "Oops Timed Out. Please Try again...");
         },
         timeout: Duration(seconds: 60));
   }

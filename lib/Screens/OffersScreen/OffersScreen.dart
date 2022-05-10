@@ -8,7 +8,6 @@ class OffersScreen extends StatefulWidget {
   _OffersScreenState createState() => _OffersScreenState();
 }
 
-//TODO
 class _OffersScreenState extends State<OffersScreen> {
   @override
   Widget build(BuildContext context) {

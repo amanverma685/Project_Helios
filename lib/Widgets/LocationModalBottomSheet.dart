@@ -25,9 +25,15 @@ class _LocationModalBottomSheetState extends State<LocationModalBottomSheet> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 30),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Please add your Delivery Location",
+                style: TextStyle(color: Colors.green, fontSize: 18),
+              ),
               Container(
-                height: 200,
+                height: 250,
                 child: ListView.builder(
                   itemCount: locationList.length,
                   itemBuilder: (BuildContext context, int index) {

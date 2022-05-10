@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
               backgroundColor: MaterialStateProperty.all(Colors.black),
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             ),
-            child: Text("Press Here To Get Started"),
+            child: Text("Get Set Goooo"),
             onPressed: () {
               Navigator.push(
                 context,

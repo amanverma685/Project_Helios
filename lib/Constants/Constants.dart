@@ -166,7 +166,12 @@ List products = [
 
 List locationList = [
   'Rajfamily ward no.-3 Khairagarh, 491881',
-  'Deepak Nagar Near Shantiniketan Durg, 491001'
+  'Krishna Campus , Khairagarh',
+  'Saraswati Hostel,Khairagarh',
+  'Maa Ki Dua, Khairagarh ',
+  'ABC, Khairagarh',
+  'Amlipara Khairagarh',
+  'Dauchaura, Khairagarh'
 ];
 
 List previousOrdersList = ['aman', 'sh'];

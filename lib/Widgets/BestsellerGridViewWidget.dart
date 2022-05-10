@@ -4,8 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:helios/Models/Get-All-Bestseller-Model.dart';
 import 'package:helios/Screens/ProductScreen/ProductScreen.dart';
 
-import 'CachedNetworkImageWidget.dart';
-
 class BestSellerGridViewWidget extends StatefulWidget {
   const BestSellerGridViewWidget({Key? key}) : super(key: key);
 
